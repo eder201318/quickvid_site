@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - QuickVid Mega Ads</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', }</script>
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .toggle-checkbox:checked { right: 0; border-color: #2563EB; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #2563EB; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 min-h-screen font-sans text-slate-800 dark:text-slate-200">
+
+    <nav class="bg-white dark:bg-slate-900 shadow-sm border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 font-bold text-xl"><i data-lucide="settings-2" class="w-6 h-6 text-blue-600"></i> QuickVid <span class="text-slate-400 font-normal">Admin (22 Zonas)</span></div>
+            <div class="flex items-center gap-4">
+                <span id="save-status" class="text-sm font-medium text-emerald-600 hidden flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4"></i> Guardado!</span>
+                <button onclick="saveAdminConfigs()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-bold flex items-center gap-2 transition-all active:scale-95"><i data-lucide="save" class="w-4 h-4"></i> Guardar Tudo</button>
+                <a href="index.html" target="_blank" class="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white"><i data-lucide="external-link" class="w-4 h-4"></i> Ver Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-extrabold mb-2 text-slate-900 dark:text-white">Arsenal de Monetização</h1>
+            <p class="text-sm text-slate-500 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 p-3 rounded-lg border border-amber-200 dark:border-amber-800/50 flex items-start gap-2">
+                <i data-lucide="alert-triangle" class="w-5 h-5 shrink-0 mt-0.5"></i>
+                <span><strong>Aviso:</strong> Tem 22 espaços de publicidade! As laterais acomodam agora 3 anúncios em cada lado em simultâneo. Recomendamos testar as melhores combinações no seu site em direto (evite ligar os 22 ao mesmo tempo para não ser penalizado pelo Google AdSense).</span>
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4" id="modules-container">
+            <!-- Os módulos serão gerados aqui automaticamente pelo JS -->
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // Configuração Épica das 22 Zonas
+        const modules = [
+            { id: 'global', name: '1. Script Global 1 (Head)', desc: 'Tags de verificação AdSense.' },
+            { id: 'interstitial', name: '2. Script Global 2 (Oculto)', desc: 'Pop-unders ou Interstitials.' },
+            { id: 'sticky_bottom', name: '3. Âncora Mobile (Fixo no Fundo)', desc: 'Anúncio que segue o scroll.' },
+            { id: 'top', name: '4. Banner Topo (Header)', desc: 'Abaixo da barra de navegação.' },
+            { id: 'under_hero', name: '5. Banner Abaixo do Título', desc: 'Acima da barra de pesquisa.' },
+            { id: 'middle', name: '6. Banner Meio (Input)', desc: 'Logo abaixo do botão de Baixar.' },
+            { id: 'result_top', name: '7. Download: Topo', desc: 'Acima da capa do vídeo gerado.' },
+            { id: 'result_mid', name: '8. Download: Entre Botões', desc: 'No meio da lista de botões.' },
+            { id: 'result_bottom', name: '9. Download: Fundo', desc: 'Abaixo do aviso legal no final.' },
+            { id: 'floating_left_1', name: '10. Flutuante Esq. 1 (Topo)', desc: 'Topo da margem esquerda.' },
+            { id: 'floating_left_2', name: '11. Flutuante Esq. 2 (Meio)', desc: 'Centro da margem esquerda.' },
+            { id: 'floating_left_3', name: '12. Flutuante Esq. 3 (Fundo)', desc: 'Fundo da margem esquerda.' },
+            { id: 'floating_right_1', name: '13. Flutuante Dir. 1 (Topo)', desc: 'Topo da margem direita.' },
+            { id: 'floating_right_2', name: '14. Flutuante Dir. 2 (Meio)', desc: 'Centro da margem direita.' },
+            { id: 'floating_right_3', name: '15. Flutuante Dir. 3 (Fundo)', desc: 'Fundo da margem direita.' },
+            { id: 'features_top', name: '16. Acima das Vantagens', desc: 'Antes dos 3 quadros cinzentos.' },
+            { id: 'features_bottom', name: '17. Abaixo das Vantagens', desc: 'Depois dos 3 quadros cinzentos.' },
+            { id: 'faq_top', name: '18. Acima do FAQ', desc: 'Antes das Perguntas Frequentes.' },
+            { id: 'faq_bottom', name: '19. Abaixo do FAQ', desc: 'Depois das Perguntas Frequentes.' },
+            { id: 'bottom_1', name: '20. Pré-Rodapé 1', desc: 'No fundo da página.' },
+            { id: 'bottom_2', name: '21. Pré-Rodapé 2', desc: 'O último banner antes do rodapé escuro.' },
+            { id: 'modal', name: '22. Pop-up de Recompensa', desc: 'Dentro do relógio de 15 segundos.' }
+        ];
+
+        const container = document.getElementById('modules-container');
+        
+        // Gerador Automático da Interface
+        modules.forEach(mod => {
+            const isSpecial = ['global', 'interstitial', 'modal'].includes(mod.id);
+            const isLateral = mod.id.includes('floating_');
+            
+            // Cores baseadas no tipo de anúncio
+            let bgColor = isSpecial ? 'bg-indigo-50/50 dark:bg-indigo-900/10' : 'bg-white dark:bg-slate-900';
+            if(isLateral) bgColor = 'bg-cyan-50/50 dark:bg-cyan-900/10';
+            
+            const borderCol = isSpecial ? 'border-indigo-200 dark:border-indigo-800' : isLateral ? 'border-cyan-200 dark:border-cyan-800' : 'border-slate-200 dark:border-slate-800';
+            const headerBg = isSpecial ? 'bg-indigo-50/80 dark:bg-indigo-900/20' : isLateral ? 'bg-cyan-50/80 dark:bg-cyan-900/20' : 'bg-slate-50/50 dark:bg-slate-800/20';
+
+            container.innerHTML += `
+            <div class="${bgColor} rounded-xl shadow-sm border ${borderCol} overflow-hidden">
+                <div class="p-4 border-b border-slate-100 dark:border-slate-800/50 flex justify-between items-center ${headerBg}">
+                    <div>
+                        <h3 class="font-bold text-sm text-slate-800 dark:text-slate-100">${mod.name}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">${mod.desc}</p>
+                    </div>
+                    <div class="relative inline-block w-11 mr-2 align-middle select-none">
+                        <input type="checkbox" id="toggle-${mod.id}" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-all duration-300"/>
+                        <label for="toggle-${mod.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-600 cursor-pointer transition-all duration-300"></label>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <textarea id="code-${mod.id}" rows="2" class="w-full p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-300 text-xs font-mono outline-none focus:ring-2 focus:ring-blue-500 transition-all" placeholder="Cole o código do anúncio aqui..."></textarea>
+                </div>
+            </div>`;
+        });
+
+        // Carregar do LocalStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            modules.forEach(mod => {
+                document.getElementById('code-' + mod.id).value = localStorage.getItem('ad_' + mod.id) || '';
+                document.getElementById('toggle-' + mod.id).checked = localStorage.getItem('toggle_' + mod.id) === 'true';
+            });
+            lucide.createIcons();
+        });
+
+        // Guardar no LocalStorage
+        function saveAdminConfigs() {
+            modules.forEach(mod => {
+                localStorage.setItem('ad_' + mod.id, document.getElementById('code-' + mod.id).value);
+                localStorage.setItem('toggle_' + mod.id, document.getElementById('toggle-' + mod.id).checked);
+            });
+            const status = document.getElementById('save-status');
+            status.classList.remove('hidden');
+            setTimeout(() => { status.classList.add('hidden'); }, 3000);
+        }
+    </script>
+</body>
+</html>

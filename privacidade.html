@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - QuickVid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', }</script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-300">
+
+    <!-- NAVEGAÇÃO SIMPLES -->
+    <nav class="bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <div class="bg-blue-600 p-2 rounded-xl">
+                    <i data-lucide="download" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">Quick<span class="text-blue-600">Vid</span></span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar ao Início
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 md:p-12">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="p-3 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-2xl">
+                    <i data-lucide="shield" class="w-8 h-8"></i>
+                </div>
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Política de Privacidade</h1>
+            </div>
+            <p class="text-sm text-slate-500 mb-8 border-b border-slate-100 dark:border-slate-800 pb-6">Última atualização: Março de 2026</p>
+
+            <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-6">
+                
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">1. Informações que recolhemos</h2>
+                <p>O QuickVid foi concebido para respeitar a sua privacidade. <strong>Não exigimos registo, nem recolhemos informações pessoais identificáveis (como nome, email ou telefone) para que possa utilizar a nossa ferramenta.</strong></p>
+                <p>Quando utiliza o nosso serviço para processar ligações de vídeos, esses links não são associados a si nem armazenados nos nossos servidores de forma permanente. O processamento é feito de forma efémera.</p>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">2. Uso de Cookies e Publicidade (Google AdSense)</h2>
+                <p>Utilizamos empresas de publicidade de terceiros, como a Google, para apresentar anúncios quando visita o nosso website. Estas empresas podem utilizar informações (que não incluem o seu nome, morada, endereço de e-mail ou número de telefone) sobre as suas visitas a este e a outros websites para exibir anúncios relacionados com produtos e serviços do seu interesse.</p>
+                <ul class="list-disc pl-5 space-y-2 mt-4">
+                    <li>Fornecedores de terceiros, incluindo a Google, utilizam cookies para apresentar anúncios com base nas visitas anteriores do utilizador ao seu website ou a outros websites.</li>
+                    <li>A utilização de cookies de publicidade (Cookie DART) permite à Google e aos seus parceiros apresentar anúncios aos utilizadores com base nas visitas que fazem aos seus sites na Internet.</li>
+                    <li>Os utilizadores podem desativar a publicidade personalizada acedendo às <a href="https://www.google.com/settings/ads" target="_blank" class="text-blue-600 hover:underline">Definições de Anúncios da Google</a>.</li>
+                </ul>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">3. Ficheiros de Registo (Log Files)</h2>
+                <p>À semelhança de muitos outros websites, o QuickVid faz uso de ficheiros de registo (log files). As informações contidas nesses ficheiros incluem o endereço de Protocolo de Internet (IP), o tipo de navegador (browser), o Fornecedor de Serviços de Internet (ISP), a data e hora, as páginas de entrada/saída e possivelmente o número de cliques. Esta informação é utilizada para analisar tendências, administrar o site e reunir informação demográfica de forma anónima.</p>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">4. Ligações de Terceiros</h2>
+                <p>A nossa ferramenta fornece ligações para descarregar ficheiros de plataformas externas (como TikTok, Instagram, Facebook). Não temos controlo sobre as práticas de privacidade ou o conteúdo dessas plataformas externas.</p>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">5. Contacto</h2>
+                <p>Se tiver alguma dúvida sobre a nossa Política de Privacidade, não hesite em contactar-nos através da nossa página de <a href="contacto.html" class="text-blue-600 font-medium hover:underline">Contacto</a>.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto text-center text-sm">
+        <p>© 2026 QuickVid. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>

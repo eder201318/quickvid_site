@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - QuickVid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class', }</script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-300">
+
+    <!-- NAVEGAÇÃO SIMPLES -->
+    <nav class="bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <div class="bg-blue-600 p-2 rounded-xl">
+                    <i data-lucide="download" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">Quick<span class="text-blue-600">Vid</span></span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar ao Início
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 md:p-12">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="p-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-2xl">
+                    <i data-lucide="scale" class="w-8 h-8"></i>
+                </div>
+                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Termos de Uso</h1>
+            </div>
+            <p class="text-sm text-slate-500 mb-8 border-b border-slate-100 dark:border-slate-800 pb-6">Última atualização: Março de 2026</p>
+
+            <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-6">
+                
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">1. Aceitação dos Termos</h2>
+                <p>Ao aceder e utilizar o site QuickVid, o utilizador concorda em cumprir e ficar vinculado a estes Termos de Uso. Se não concordar com alguma parte destes termos, não deverá utilizar a nossa ferramenta.</p>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">2. Natureza do Serviço</h2>
+                <p>O QuickVid é uma ferramenta de utilidade online que permite aos utilizadores processar hiperligações (links) publicamente disponíveis na Internet para extrair ficheiros de média. <strong>O QuickVid não aloja, não armazena e não transmite vídeos, músicas ou imagens nos seus próprios servidores.</strong> Toda a extração é efetuada através de pedidos diretos temporários para fins de uso estritamente pessoal.</p>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">3. Direitos de Autor e Propriedade Intelectual</h2>
+                <p>O utilizador é o único e exclusivo responsável pelos ficheiros que decide descarregar utilizando o nosso serviço. Ao utilizar o QuickVid, o utilizador declara e garante que:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-4">
+                    <li>Utilizará o serviço apenas para descarregar conteúdos dos quais detém os direitos, ou para os quais obteve permissão explícita do detentor dos direitos de autor original.</li>
+                    <li>Não utilizará a ferramenta para piratear, distribuir, republicar ou lucrar com material protegido por direitos de autor.</li>
+                    <li>Reconhece que o QuickVid não assume qualquer responsabilidade pelas ações dos utilizadores em relação ao descarregamento de conteúdos de terceiros.</li>
+                </ul>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">4. Limitação de Responsabilidade</h2>
+                <p>A ferramenta é fornecida "tal como está" e "conforme disponível". O QuickVid não garante que o serviço será ininterrupto, livre de erros ou 100% seguro. Em nenhuma circunstância a nossa equipa, os nossos parceiros ou fornecedores serão responsabilizados por perdas, danos diretos ou indiretos resultantes do uso da nossa plataforma ou da incapacidade de efetuar um descarregamento.</p>
+
+                <h2 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-4">5. Modificações do Serviço</h2>
+                <p>Reservamo-nos o direito de modificar, suspender ou descontinuar o serviço (ou qualquer parte dele) a qualquer momento, com ou sem aviso prévio. Como as plataformas suportadas atualizam frequentemente os seus sistemas, a funcionalidade de extração do QuickVid pode variar.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto text-center text-sm">
+        <p>© 2026 QuickVid. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>
