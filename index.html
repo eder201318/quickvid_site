@@ -4,84 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickVid - Downloader de Vídeos Rápido e Grátis</title>
-    <meta name="google-site-verification" content="pr6qFvh-4mjrWrfPviTDGoJ_eFsdh3cM1U0wrx51_pA" />
-    <link rel="shortcut icon" href="logoo.ico" type="image/x-icon">
+     <meta name="google-site-verification" content="pr6qFvh-4mjrWrfPviTDGoJ_eFsdh3cM1U0wrx51_pA" />
     <!-- Tailwind CSS -->
+    <link rel="shortcut icon" href="logoo.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class', }</script>
     <!-- Ícones Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Módulos 1 e 2 (Scripts Globais) serão injetados aqui via JS -->
 
     <style>
         .animate-in { animation: slideUpFade 0.4s ease-out forwards; }
         @keyframes slideUpFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .hidden { display: none !important; }
-        
-        /* Estilo elegante para as caixas de teste de anúncios */
-        .ad-box { 
-            width: 100%; 
-            min-height: 90px; 
-            background: rgba(148, 163, 184, 0.1); 
-            border: 2px dashed rgba(148, 163, 184, 0.4); 
-            border-radius: 12px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #64748b; 
-            font-size: 13px; 
-            font-weight: 600;
-            text-align: center; 
-            padding: 10px;
-            transition: all 0.3s ease;
-            box-sizing: border-box; /* Previne que o padding quebre a largura */
-        }
-        .dark .ad-box { background: rgba(30, 41, 59, 0.5); border-color: rgba(71, 85, 105, 0.5); color: #94a3b8; }
-
-        /* 🔥 CSS PURO PARA AS LATERAIS (Desaparecem em Mobile/Tablets) 🔥 */
-        .sidebar-container {
-            display: none; 
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 30;
-            width: 160px;
-            flex-direction: column;
-            gap: 16px; 
-        }
-        @media (min-width: 1150px) {
-            .sidebar-container { display: flex; }
-        }
-        .side-left { left: 16px; }
-        .side-right { right: 16px; }
-
-        /* Tranca anti-overflow para mobile */
-        .ad-wrapper { max-width: 100%; overflow: hidden; display: flex; justify-content: center; }
     </style>
 </head>
 <body class="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-800 dark:text-slate-100 flex flex-col selection:bg-blue-200 transition-colors duration-300 overflow-x-hidden">
-
-    <!-- 💰 MÓDULO 3: Sticky Bottom (Âncora Fixo no Fundo para Mobile) -->
-    <div id="sticky_bottom-ad-container" class="fixed bottom-0 left-0 w-full z-40 flex justify-center pointer-events-none px-2">
-        <div id="sticky_bottom-ad-placeholder" class="pointer-events-auto bg-slate-800/90 backdrop-blur text-white w-full max-w-[320px] h-[50px] flex items-center justify-center text-xs hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] rounded-t-xl border-t border-x border-slate-700">
-            Anúncio Âncora (320x50)
-        </div>
-    </div>
-
-    <!-- 💰 MÓDULOS 10 a 12: Flutuantes Esquerdos (CSS PURO) -->
-    <div class="sidebar-container side-left">
-        <div id="floating_left_1-ad-container" class="w-full"><div id="floating_left_1-ad-placeholder" class="ad-box h-[250px] hidden">Lateral Esq. 1</div></div>
-        <div id="floating_left_2-ad-container" class="w-full"><div id="floating_left_2-ad-placeholder" class="ad-box h-[250px] hidden">Lateral Esq. 2</div></div>
-        <div id="floating_left_3-ad-container" class="w-full"><div id="floating_left_3-ad-placeholder" class="ad-box h-[250px] hidden">Lateral Esq. 3</div></div>
-    </div>
-    
-    <!-- 💰 MÓDULOS 13 a 15: Flutuantes Direitos (CSS PURO) -->
-    <div class="sidebar-container side-right">
-        <div id="floating_right_1-ad-container" class="w-full"><div id="floating_right_1-ad-placeholder" class="ad-box h-[250px] hidden">Lateral Dir. 1</div></div>
-        <div id="floating_right_2-ad-container" class="w-full"><div id="floating_right_2-ad-placeholder" class="ad-box h-[250px] hidden">Lateral Dir. 2</div></div>
-        <div id="floating_right_3-ad-container" class="w-full"><div id="floating_right_3-ad-placeholder" class="ad-box h-[250px] hidden">Lateral Dir. 3</div></div>
-    </div>
 
     <!-- NAVEGAÇÃO SUPERIOR -->
     <nav class="bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-50 transition-colors duration-300 w-full">
@@ -99,12 +36,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 pt-2 pb-4 space-y-1 shadow-lg absolute w-full transition-colors duration-300 z-40"></div>
     </nav>
 
-    <!-- 💰 MÓDULO 4: Banner Topo -->
-    <div id="top-ad-container" class="ad-wrapper w-full max-w-3xl mx-auto mt-6 px-4">
-        <div id="top-ad-placeholder" class="ad-box max-w-[728px] hidden">Banner Topo (Responsivo)</div>
-    </div>
-
-    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full relative">
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full relative">
         
         <!-- TEXTO HERO -->
         <div class="text-center mb-8">
@@ -112,13 +44,8 @@
             <p id="hero-subtitle" class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">A ferramenta mais rápida e segura para baixar vídeos. Sem marcas d'água.</p>
         </div>
 
-        <!-- 💰 MÓDULO 5: Abaixo do Título -->
-        <div id="under_hero-ad-container" class="ad-wrapper w-full mb-6">
-            <div id="under_hero-ad-placeholder" class="ad-box max-w-[728px] hidden">Banner Abaixo do Título</div>
-        </div>
-
         <!-- CAIXA DE INPUT (Formulário) -->
-        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-2 md:p-4 border border-slate-100 dark:border-slate-800 mb-6 relative z-10 transition-colors duration-300">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-2 md:p-4 border border-slate-100 dark:border-slate-800 mb-10 relative z-10 transition-colors duration-300">
             <form id="download-form" class="flex flex-col md:flex-row gap-3">
                 <div class="relative flex-grow">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><i data-lucide="link" class="h-5 w-5 text-slate-400"></i></div>
@@ -137,19 +64,8 @@
             <div id="error-message" class="hidden mt-4 p-4 bg-red-50 text-red-600 rounded-xl flex items-center gap-2 text-sm"><i data-lucide="alert-circle" class="w-5 h-5"></i><span id="error-text"></span></div>
         </div>
 
-        <!-- 💰 MÓDULO 6: Banner Meio -->
-        <div id="middle-ad-container" class="ad-wrapper w-full mb-8">
-            <div id="middle-ad-placeholder" class="ad-box max-w-[728px] hidden">Banner do Meio (Responsivo)</div>
-        </div>
-
         <!-- ÁREA DE RESULTADOS -->
         <div id="result-area" class="hidden bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 p-4 md:p-8 mb-12 animate-in transition-colors duration-300 overflow-hidden w-full">
-            
-            <!-- 💰 MÓDULO 7: Result Topo -->
-            <div id="result_top-ad-container" class="ad-wrapper w-full mb-6">
-                <div id="result_top-ad-placeholder" class="ad-box hidden">Resultado: Anúncio de Topo</div>
-            </div>
-
             <div class="flex flex-col md:flex-row gap-6 md:gap-8">
                 <div class="md:w-1/3 shrink-0">
                     <div class="relative aspect-video md:aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-inner">
@@ -166,30 +82,14 @@
                     
                     <div id="download-options" class="flex flex-col gap-3"></div>
 
-                    <!-- 💰 MÓDULO 8: Result Meio -->
-                    <div id="result_mid-ad-container" class="ad-wrapper w-full mt-2 mb-2">
-                        <div id="result_mid-ad-placeholder" class="ad-box hidden min-h-[60px]">Resultado: Anúncio do Meio</div>
-                    </div>
-
                     <p class="text-xs text-slate-400 mt-2 flex items-start gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 shrink-0"></i> Ao baixar, concorda com os nossos Termos.</p>
                 </div>
-            </div>
-
-            <!-- 💰 MÓDULO 9: Result Fundo -->
-            <div id="result_bottom-ad-container" class="ad-wrapper w-full mt-6">
-                <div id="result_bottom-ad-placeholder" class="ad-box hidden min-h-[120px]">Resultado: Anúncio Nativo</div>
             </div>
         </div>
 
         <!-- CONTEÚDO DEFAULT -->
         <div id="default-content">
-            
-            <!-- 💰 MÓDULO 16: Acima das Vantagens -->
-            <div id="features_top-ad-container" class="ad-wrapper w-full mb-6">
-                <div id="features_top-ad-placeholder" class="ad-box max-w-[728px] hidden">Banner Acima dos Recursos</div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 w-full">
                 <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
                     <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4"><i data-lucide="zap" class="w-6 h-6 text-amber-500"></i></div>
                     <h3 class="font-bold text-slate-800 dark:text-white">Rápido</h3>
@@ -207,16 +107,6 @@
                 </div>
             </div>
 
-            <!-- 💰 MÓDULO 17: Abaixo das Vantagens -->
-            <div id="features_bottom-ad-container" class="ad-wrapper w-full mb-10">
-                <div id="features_bottom-ad-placeholder" class="ad-box max-w-[728px] hidden">Banner Abaixo dos Recursos</div>
-            </div>
-
-            <!-- 💰 MÓDULO 18: Acima do FAQ -->
-            <div id="faq_top-ad-container" class="ad-wrapper w-full mb-6">
-                <div id="faq_top-ad-placeholder" class="ad-box max-w-[728px] hidden">Banner Acima do FAQ</div>
-            </div>
-
             <div class="mb-8 w-full overflow-hidden">
                 <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center mb-6">Como utilizar?</h2>
                 <div class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
@@ -228,55 +118,11 @@
                     </ol>
                 </div>
             </div>
-
-            <!-- 💰 MÓDULO 19: Abaixo do FAQ -->
-            <div id="faq_bottom-ad-container" class="ad-wrapper w-full mt-6 mb-10">
-                <div id="faq_bottom-ad-placeholder" class="ad-box max-w-[728px] hidden">Banner Abaixo do FAQ</div>
-            </div>
-        </div>
-
-        <!-- 💰 MÓDULO 20: Pré-Rodapé 1 -->
-        <div id="bottom_1-ad-container" class="ad-wrapper w-full mb-6">
-            <div id="bottom_1-ad-placeholder" class="ad-box max-w-[728px] hidden">Pré-Rodapé 1</div>
-        </div>
-        
-        <!-- 💰 MÓDULO 21: Pré-Rodapé 2 -->
-        <div id="bottom_2-ad-container" class="ad-wrapper w-full mb-6">
-            <div id="bottom_2-ad-placeholder" class="ad-box max-w-[728px] hidden">Pré-Rodapé 2</div>
         </div>
     </main>
 
-    <!-- 💰 MÓDULO 22: MODAL DE RECOMPENSA (Responsivo) -->
-    <div id="reward-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/95 backdrop-blur-md transition-opacity p-4 w-full">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col animate-in duration-300 max-h-[90vh]">
-            <div class="p-4 bg-slate-100 dark:bg-slate-800 flex justify-between items-center border-b border-slate-200 dark:border-slate-700">
-                <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold text-sm md:text-base">
-                    <i data-lucide="unlock" class="w-5 h-5"></i><span>Desbloqueando...</span>
-                </div>
-                <button onclick="cancelReward()" class="text-slate-400 hover:text-red-500 p-1.5 bg-white dark:bg-slate-700 rounded-lg transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            
-            <div class="p-4 md:p-6 flex flex-col items-center justify-center overflow-y-auto">
-                <!-- Espaço do Anúncio Dinâmico -->
-                <div id="modal-ad-container" class="ad-wrapper w-full mb-6 min-h-[250px] items-center">
-                    <div id="modal-ad-placeholder" class="w-full max-w-[300px] h-[250px] ad-box hidden flex flex-col items-center justify-center mx-auto">
-                        <i data-lucide="badge-dollar-sign" class="w-8 h-8 mb-2"></i>
-                        <span>A preparar Vídeo...</span>
-                    </div>
-                </div>
-                
-                <div class="text-center">
-                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400 mb-3 font-medium">O seu download começará em breve.</p>
-                    <div class="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-6 py-3 rounded-full font-mono text-xl md:text-2xl font-extrabold shadow-inner">
-                        <i data-lucide="clock" class="w-6 h-6 animate-pulse"></i><span id="reward-timer">15</span>s
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- FOOTER ESCURO -->
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 mt-auto pb-24 md:pb-12 w-full">
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 mt-auto pb-12 w-full">
         <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
             <div class="flex items-center gap-2 mb-4">
                 <div class="bg-blue-600 p-1.5 rounded-lg"><i data-lucide="download" class="w-4 h-4 text-white"></i></div>
@@ -294,51 +140,6 @@
 
     <script>
         lucide.createIcons();
-
-        function injectAd(slotId, storageKey, placeholderId) {
-            const container = document.getElementById(slotId);
-            const placeholder = document.getElementById(placeholderId);
-            const code = localStorage.getItem(storageKey);
-            const enabled = localStorage.getItem('toggle_' + storageKey.replace('ad_', '')) === 'true';
-
-            if (container) {
-                Array.from(container.children).forEach(child => { 
-                    if (child.id !== placeholderId) child.remove(); 
-                });
-                
-                if (enabled) {
-                    if (placeholder) placeholder.classList.remove('hidden'); 
-                    if (code && code.trim() !== '') {
-                        if (placeholder) placeholder.classList.add('hidden'); 
-                        try { container.appendChild(document.createRange().createContextualFragment(code)); } catch(e) {}
-                    }
-                } else {
-                    if (placeholder) placeholder.classList.add('hidden'); 
-                }
-            }
-        }
-
-        function applyAds() {
-            if (localStorage.getItem('toggle_global') === 'true') { 
-                try { document.head.appendChild(document.createRange().createContextualFragment(localStorage.getItem('ad_global')||'')); } catch(e){} 
-            }
-            if (localStorage.getItem('toggle_interstitial') === 'true') { 
-                try { document.head.appendChild(document.createRange().createContextualFragment(localStorage.getItem('ad_interstitial')||'')); } catch(e){} 
-            }
-            
-            const visualSlots = [
-                'sticky_bottom', 'top', 'under_hero', 'middle', 'result_top', 'result_mid', 'result_bottom',
-                'floating_left_1', 'floating_left_2', 'floating_left_3',
-                'floating_right_1', 'floating_right_2', 'floating_right_3',
-                'features_top', 'features_bottom', 'faq_top', 'faq_bottom', 'bottom_1', 'bottom_2', 'modal'
-            ];
-            
-            visualSlots.forEach(id => {
-                injectAd(id + '-ad-container', 'ad_' + id, id + '-ad-placeholder');
-            });
-        }
-        
-        applyAds();
 
         // MENUS E LÓGICA DE INTERFACE
         const platforms = [
@@ -426,7 +227,6 @@
             document.getElementById('error-message').classList.add('hidden');
             
             try {
-                // AQUI ESTÁ A MAGIA! O seu site agora fala com o servidor na nuvem!
                 const response = await fetch('https://quickvid-backend-8a9t.onrender.com/api/extract', { 
                     method: 'POST', 
                     headers: { 'Content-Type': 'application/json' }, 
@@ -451,8 +251,10 @@
                 
                 data.options.forEach(opt => { 
                     const iconName = opt.type === 'video' ? 'video' : 'music';
+                    
+                    // Substituição do botão com pop-up por um link direto (<a>)
                     opts.innerHTML += `
-                    <button onclick="startRewardedDownload('${opt.url}')" class="flex items-center justify-between p-4 rounded-xl text-white font-medium ${opt.color} w-full shadow hover:scale-[1.02] active:scale-[0.98] transition-all text-sm md:text-base">
+                    <a href="${opt.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl text-white font-medium ${opt.color} w-full shadow hover:scale-[1.02] active:scale-[0.98] transition-all text-sm md:text-base cursor-pointer">
                         <div class="flex items-center gap-2 md:gap-3 text-left overflow-hidden">
                             <i data-lucide="${iconName}" class="w-5 h-5 shrink-0"></i>
                             <span class="truncate">
@@ -461,11 +263,10 @@
                             </span>
                         </div>
                         <i data-lucide="download" class="w-5 h-5 opacity-80 shrink-0 ml-2"></i>
-                    </button>`; 
+                    </a>`; 
                 });
                 
                 lucide.createIcons(); 
-                applyAds(); 
                 
             } catch (err) { 
                 let msg = err.message;
@@ -478,64 +279,6 @@
                 document.getElementById('btn-loading').classList.add('hidden'); 
             }
         });
-
-        // LÓGICA DO MODAL DE RECOMPENSA (UM ANÚNCIO FIXO POR DOWNLOAD)
-        let timerInt; 
-        let currentUrl = '';
-        
-        function startRewardedDownload(url) {
-            currentUrl = url; 
-            let time = 15; 
-            
-            document.getElementById('reward-timer').innerText = time; 
-            document.getElementById('reward-modal').classList.remove('hidden');
-            
-            const allAdKeys = ['ad_top', 'ad_under_hero', 'ad_middle', 'ad_result_top', 'ad_result_mid', 'ad_result_bottom', 'ad_floating_left_1', 'ad_floating_left_2', 'ad_floating_left_3', 'ad_floating_right_1', 'ad_floating_right_2', 'ad_floating_right_3', 'ad_features_top', 'ad_features_bottom', 'ad_faq_top', 'ad_faq_bottom', 'ad_bottom_1', 'ad_bottom_2', 'ad_modal'];
-            
-            const activeAdsCodes = allAdKeys
-                .filter(key => localStorage.getItem('toggle_' + key.replace('ad_', '')) === 'true')
-                .map(key => localStorage.getItem(key))
-                .filter(code => code && code.trim() !== '');
-
-            const modalAdContainer = document.getElementById('modal-ad-container');
-            const modalAdPlaceholder = document.getElementById('modal-ad-placeholder');
-
-            function changeModalAd() {
-                if (activeAdsCodes.length > 0) {
-                    const randomAdCode = activeAdsCodes[Math.floor(Math.random() * activeAdsCodes.length)];
-                    if(modalAdPlaceholder) modalAdPlaceholder.classList.add('hidden');
-                    Array.from(modalAdContainer.children).forEach(child => { 
-                        if (child.id !== 'modal-ad-placeholder') child.remove(); 
-                    });
-                    try { 
-                        modalAdContainer.appendChild(document.createRange().createContextualFragment(randomAdCode)); 
-                    } catch(e) {}
-                }
-            }
-
-            // Injeta o anúncio apenas 1 vez ao abrir
-            changeModalAd();
-
-            if(timerInt) clearInterval(timerInt);
-            
-            timerInt = setInterval(() => { 
-                time--; 
-                document.getElementById('reward-timer').innerText = time; 
-
-                if(time <= 0) { 
-                    clearInterval(timerInt); 
-                    document.getElementById('reward-modal').classList.add('hidden'); 
-                    window.location.href = currentUrl;
-                } 
-            }, 1000);
-        }
-        
-        function cancelReward() { 
-            if(confirm("Se fechar agora, o download será cancelado e perderá o vídeo de Alta Qualidade. Tem a certeza que deseja sair?")) { 
-                clearInterval(timerInt); 
-                document.getElementById('reward-modal').classList.add('hidden'); 
-            } 
-        }
 
         renderMenus();
     </script>
